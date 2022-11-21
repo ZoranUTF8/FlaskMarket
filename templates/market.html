@@ -45,7 +45,39 @@
     <main>
         <div class="container-fluid">
             <h1>Market Page</h1>
-            <p>{{ items }}</p>
+            <table class="table table-hover table-dark">
+                <thead>
+                    <tr>
+                        <!-- COLUMN NAMES -->
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Barcode</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- Iterate over items list containing 3 items -->
+                    <!-- %% LOGIC CODE -->
+                    {% for item in items %}
+                    <tr>
+                        <!-- ROWS -->
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.name}}</td>
+                        <td>{{item.barcode}}</td>
+                        <td>{{item.price}}</td>
+                        <td>
+                            <button class="btn btn-outline btn-info">Info</button>
+                            <button class="btn btn-outline btn-success">Purchase</button>
+
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
         </div>
 
     </main>

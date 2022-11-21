@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+
 from utils.marketPageData import items
 
 app = Flask(__name__)
