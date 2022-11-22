@@ -8,8 +8,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///market.db"
 
 db = SQLAlchemy(app)
 
+
+# with app.app_context():
+#     db.create_all()
+
 from market.routes import routes
-
-
-with app.app_context():
-    db.create_all()
