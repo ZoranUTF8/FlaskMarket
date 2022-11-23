@@ -16,6 +16,8 @@ Register
         <div class="row g-5">
             <div class="col-sm-12 col-md-6">
                 <form method="POST" class="form-register row g-3" style="color:white">
+                    <!-- Protects from CSRF cross site request forgery -->
+                    {{ form.hidden_tag() }}
                     <!-- USERNAME -->
                     {{form.userName.label()}}
                     {{form.userName(class="form-control",placeholder="Username")}}
@@ -29,7 +31,7 @@ Register
 
                     <!-- Password repeat -->
                     {{form.passwordTwo.label()}}
-                    {{form.passwordTwo(class="form-control",placeholder="Password Repeat")}}
+                    {{form.passwordTwo(class="form-control",placeholder="Confirm Password")}}
 
                     <!-- Submit -->
                     {{form.submit(class="btn btn-primary")}}

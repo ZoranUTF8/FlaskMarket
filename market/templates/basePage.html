@@ -50,6 +50,14 @@
     </nav>
     <!--  NAVBAR END -->
 
+    <!-- FLASH MESSAGES FOR ALL TEMPLATES -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+                <p> {{ message }}</p>
+            {% endfor %}
+         {% endif %}
+    {% endwith %}
     <!-- MAIN -->
     {% block content %}
 
