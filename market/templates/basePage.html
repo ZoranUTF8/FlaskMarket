@@ -39,10 +39,10 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="{{url_for('registerPage')}}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="#">Pricing</a>
                     </li>
                 </ul>
             </div>
@@ -50,6 +50,14 @@
     </nav>
     <!--  NAVBAR END -->
 
+    <!-- FLASH MESSAGES FOR ALL TEMPLATES -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+                <p> {{ message }}</p>
+            {% endfor %}
+         {% endif %}
+    {% endwith %}
     <!-- MAIN -->
     {% block content %}
 
