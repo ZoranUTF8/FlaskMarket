@@ -50,13 +50,20 @@
     </nav>
     <!--  NAVBAR END -->
 
-    <!-- FLASH MESSAGES FOR ALL TEMPLATES -->
+    <!-- FLASH MESSAGES FOR ALL TEMPLATES-->
     {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for message in messages %}
-                <p> {{ message }}</p>
-            {% endfor %}
-         {% endif %}
+    {% if messages %}
+    <!-- Unpack the result -->
+    {% for category, message in messages %}
+    <div class="container">
+        <div class="alert alert-dismissible alert-{{category}} fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+            <p>{{message}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
     {% endwith %}
     <!-- MAIN -->
     {% block content %}

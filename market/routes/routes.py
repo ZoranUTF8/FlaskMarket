@@ -17,6 +17,10 @@ def marketPage():
     return render_template('market.html', items=items)
 
 
+'''
+RegisterForm
+Register new user and add to db
+'''
 @app.route("/register", methods=["GET", "POST"])
 def registerPage():
     form = RegisterForm()
@@ -32,6 +36,6 @@ def registerPage():
     # returned errors if any
     if form.errors != {}:
         for err_msg in form.errors.values():
-            flash(f"There was an error. {err_msg}")
+            flash(f"There was an error. {err_msg}", category="danger")
 
     return render_template("register.html", form=form)
