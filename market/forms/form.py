@@ -33,3 +33,14 @@ class RegisterForm(FlaskForm):
     passwordTwo = PasswordField(
         label="Confirm Password", validators=[EqualTo("passwordOne"), DataRequired()])
     submit = SubmitField(label="Submit")
+
+
+class LoginForm(FlaskForm):
+
+    # Create form fields
+
+    emailAddress = StringField(label="Email", validators=[
+        Email(), DataRequired()])
+    password = PasswordField(
+        label="Password", validators=[DataRequired()])
+    submit = SubmitField(label="Sign in")
