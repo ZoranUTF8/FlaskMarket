@@ -1,0 +1,43 @@
+{% extends "basePage.html" %}
+
+<!-- TITLE -->
+{% block title %}
+Login
+{% endblock%}
+
+
+<!-- MAIN CONTENT -->
+{% block content %}
+
+<div class="text-center mt-5 mb-5 p-3">
+    <div class="container">
+        <h1 class="h1">Please login to your account</h1>
+
+        <div class="row g-5">
+            <div class="col-sm-12 col-md-6">
+                <form method="POST" class="form-register row g-3" style="color:white">
+                    <!-- Protects from CSRF cross site request forgery -->
+                    {{ form.hidden_tag() }}
+                    <!-- Email -->
+                    {{form.emailAddress.label()}}
+                    {{form.emailAddress(class="form-control",placeholder="Email Address")}}
+                    <!-- Password -->
+                    {{form.password.label()}}
+                    {{form.password(class="form-control",placeholder="Password")}}
+
+                    <!-- Submit -->
+                    {{form.submit(class="btn btn-primary")}}
+
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <img class="img-fluid rounded mx-auto d-block"
+                    src="https://dc0f69v5medz9.cloudfront.net/company/400/400/company__28b0dbe4-e66c-481f-b676-97dd5c6b912d.jpeg"
+                    alt="company logo">
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+<!-- END MAIN -->
