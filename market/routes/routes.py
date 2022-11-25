@@ -62,6 +62,7 @@ def loginPage():
         if userToLogIn and userToLogIn.check_password_match(password_to_test=form.password.data):
             flash(f"Welcome back: {userToLogIn.userName}", category="success")
             login_user(userToLogIn)
+            print(flask_login)
             return redirect(url_for("homePage"))
         else:
             flash(f"Check your input.", category="danger")

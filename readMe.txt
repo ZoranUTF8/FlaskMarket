@@ -5,4 +5,4 @@ __init__ - executes the import codes first for our app in each directory present
 
 forms need secret key
 
-what is with ?
+db browser for sql lite can cause locked database
