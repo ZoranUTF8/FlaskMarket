@@ -17,6 +17,14 @@ class User(db.Model, UserMixin):
     items = db.relationship("Item", backref="owned_user", lazy=True)
 
 # User extra properties
+
+    @property
+    def format_user_budget(self):
+        if len(str(self.budget)) >= 4:
+            return f"{str(self.budget)[:-3]},{str(self.budget)[-3:]}$"
+        else:
+            return f"{self.budget}$"
+
     @property
     def password(self):
         return self.password
