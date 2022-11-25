@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, flash
 from market.model.models import Item, User
 from market.forms.form import RegisterForm, LoginForm
 from market import db
-from flask_login import login_user
+from flask_login import login_user, logout_user, login_required
 
 
 @app.route("/")
@@ -13,6 +13,8 @@ def homePage():
 
 
 @app.route("/publicMarket")
+# Decorator that checks if the user is logged in
+@login_required
 def marketPage():
     items = Item.query.all()
     return render_template('market.html', items=items)
@@ -35,6 +37,10 @@ def registerPage():
 
         db.session.add(user_to_create)
         db.session.commit()
+
+        login_user(user_to_create)
+        flash(
+            f"Account created. You are now logged in as: {user_to_create.userName}", category="success")
         return redirect(url_for("homePage"))
     # returned errors if any
     if form.errors != {}:
@@ -45,8 +51,8 @@ def registerPage():
 
 
 '''
-Check if a user witht he provided email is in the database
-if true than comapre the passwords
+Check if a user with he provided email is in the database
+if true than compare the passwords
 '''
 
 
@@ -62,7 +68,6 @@ def loginPage():
         if userToLogIn and userToLogIn.check_password_match(password_to_test=form.password.data):
             flash(f"Welcome back: {userToLogIn.userName}", category="success")
             login_user(userToLogIn)
-            print(flask_login)
             return redirect(url_for("homePage"))
         else:
             flash(f"Check your input.", category="danger")
@@ -73,3 +78,10 @@ def loginPage():
             flash(f"There was an error. {err_msg}", category="danger")
 
     return render_template('login.html', form=form)
+
+
+@app.route("/logout",)
+def logoutPage():
+    logout_user()
+    flash("Logged out.", category="info")
+    return redirect(url_for("homePage"))
