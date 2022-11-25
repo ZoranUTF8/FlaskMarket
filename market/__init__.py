@@ -13,10 +13,11 @@ db = SQLAlchemy(app)
 
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
+login_manager.login_view = "loginPage"
+login_manager.login_message_category = "info"
 
 with app.app_context():
     db.create_all()
-
 
 
 from market.routes import routes
