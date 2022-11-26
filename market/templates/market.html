@@ -10,10 +10,10 @@ Market
 
 
 
-<main style="height:80vh">
+<main style="min-height:80vh">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-xs-12">
+            <div class="col-md-9 col-xs-12">
                 <h1>Market Page</h1>
                 <p>Available items</p>
                 <br>
@@ -54,8 +54,26 @@ Market
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-4 col-xs-12">
-                <h1>Bought items</h1>
+            <div class="col-md-3 col-xs-12">
+                <h1>Owned items</h1>
+                <p>Click on an item to sell it</p>
+                <br>
+                {% for user_item in user_owned_items %}
+                <!-- Add modal to each card -->
+                {% include "includes/sellModal.html" %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-2 text-center bg-secondary">
+                            <div class="card-body">
+                                <h4 class="card-title">{{user_item.name}}</h5>
+                                    <p class="card-text">{{user_item.description}}.</p>
+                                    <button type="button" class="btn btn-outline btn-info w-100" data-toggle="modal"
+                                        data-target="#sellModal-{{user_item.id}}">Sell</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

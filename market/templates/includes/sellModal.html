@@ -1,0 +1,34 @@
+<!-- Sell modal -->
+<div class="modal fade" id="sellModal-{{user_item.id}}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h5 class="modal-title" id="modal-title">{{ user_item.name }}</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            <div class="modal-body">
+                <!-- Sell form -->
+                <form method="POST">
+                    {{sellItem_form.hidden_tag()}}
+                    <h5 class="text-center">Confirm sell of {{user_item.name}} for the price of {{user_item.price}} $?
+                    </h5>
+                    <br>
+                    <!-- We consume the value of item in the backend -->
+                    <input id="selling_item" name="selling_item" name="selling_item" type="hidden"
+                        value="{{user_item.name}}">
+                    {{sellItem_form.submit(class="btn btn-danger w-100")}}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

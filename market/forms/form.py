@@ -51,4 +51,4 @@ class PurchaseItemForm(FlaskForm):
 
 
 class SellItemForm(FlaskForm):
-    submit = SubmitField()
+    submit = SubmitField(label="Sell")

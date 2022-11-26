@@ -3,7 +3,7 @@
         background-color: #212121;
     }
 </style>
-
+<!-- More info modal -->
 <div class="modal fade" id="moreInfoModal-{{item.id}}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -26,6 +26,7 @@
     </div>
 </div>
 
+<!-- Purchase modal -->
 <div class="modal fade" id="purchaseModal-{{item.id}}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -38,6 +39,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
+
             <div class="modal-body">
                 <!-- Purchase form -->
                 <form method="POST" class="bg-info">
@@ -56,3 +59,4 @@
         </div>
     </div>
 </div>
+
