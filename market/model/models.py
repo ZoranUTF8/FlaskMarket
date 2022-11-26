@@ -52,7 +52,7 @@ class Item(db.Model):
     def __repr__(self):
         return f"Item {self.name}"
 
-    def sell_item(self,current_user):
+    def sell_item(self, current_user):
         self.owner = current_user.id
         current_user.budget -= self.price
         db.session.commit()
