@@ -65,3 +65,7 @@ def registerUser():
             flash(f"There was an error. {err_msg}", category="danger")
 
     return render_template("register.html", form=form)
+
+
+def homePage():
+    return render_template("home.html")
