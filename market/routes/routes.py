@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, flash, request
 from market.model.models import Item, User
 from market.forms.form import RegisterForm, LoginForm, PurchaseItemForm, SellItemForm
 from market import db
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, login_required, current_user
 from market.controllers import UserController, itemController
 
 
@@ -71,26 +71,7 @@ Register new user and add to db
 
 @app.route("/register", methods=["GET", "POST"])
 def registerPage():
-    form = RegisterForm()
-    # form validation
-    if form.validate_on_submit():
-        user_to_create = User(userName=form.userName.data,
-                              emailAddress=form.emailAddress.data,
-                              password=form.passwordOne.data)
-
-        db.session.add(user_to_create)
-        db.session.commit()
-
-        login_user(user_to_create)
-        flash(
-            f"Account created. You are now logged in as: {user_to_create.userName}", category="success")
-        return redirect(url_for("homePage"))
-    # returned errors if any
-    if form.errors != {}:
-        for err_msg in form.errors.values():
-            flash(f"There was an error. {err_msg}", category="danger")
-
-    return render_template("register.html", form=form)
+    return UserController.registerUser()
 
 
 '''
@@ -106,6 +87,4 @@ def loginPage():
 
 @app.route("/logout",)
 def logoutPage():
-    logout_user()
-    flash("Logged out.", category="info")
-    return redirect(url_for("homePage"))
+    return UserController.logoutUser()
